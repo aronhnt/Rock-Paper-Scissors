@@ -2,7 +2,6 @@ from random import randint
 from ErrorCheck import errorCheck
 from sys import exit
 
-
 def menu():
     running = True
     while running == True:
@@ -18,7 +17,6 @@ def menu():
         if option == 3:
             running = False
     exit(0)
-
 
 def main():
     rps = ['Rock', 'Paper', 'Scissors']
@@ -47,6 +45,5 @@ def main():
             if userOpt == aiOpt: print('Draw')
             else:
                 print(rps[aiOpt], 'beats', rps[userOpt], 'Sorry, you lost!', sep=' ')
-
 
 menu()
