@@ -1,37 +1,51 @@
 from random import randint
 from ErrorCheck import errorCheck
+from sys import exit
+
 
 def menu():
     running = True
     while running == True:
-        print('''
+        print(
+'''
 1 - Play Vs. Human
 2 - Play Vs. AI
 3 - Quit''')
-        option = input('Choose An Option: ')
-        option = errorCheck(option,int,'Choose An Option: ')
+        option = errorCheck(input('Choose An Option: '), int, 'Choose An Option: ')
         if option == 1:
             print('WIP lol')
         if option == 2:
             main()
         if option == 3:
-            raise SystemExit
-            running = False
+        running = False
+    exit(0)
+
+
 def main():
     rps = ['Rock', 'Paper', 'Scissors']
-    rounds = input('How Many Rounds Do You Want To Play? ')
-    rounds = errorCheck(rounds,int,'How Many Rounds Do You Want To Play? ')
-    for i in range(0,rounds):
+    rounds = errorCheck(input('How Many Rounds Do You Want To Play? '), int, 'How Many Rounds Do You Want To Play? ')
+    for i in range(0, rounds):
+        win = False
         userOpt = input('Rock, paper or scissors? ').upper()
-        aiOpt = randint(0,len(rps) - 1)
-        print (aiOpt)
+        aiOpt = randint(0, len(rps) - 1)
+        print(aiOpt)
         if userOpt == 'ROCK' or userOpt == 'R':
             userOpt = 0
+            if aiOpt == 1:
+                print(rps[0], 'beats', rps[1], sep=' ')
+                win = True
         elif userOpt == 'PAPER' or userOpt == 'P':
             userOpt = 1
+            if aiOpt == 2:
+                print(rps[1], 'beats', rps[2], sep=' ')
         elif userOpt == 'SCISSORS' or userOpt == 'S':
             userOpt = 2
-        if userOpt == 1 and aiOpt == 3:
-            print(rps[1], + 'beats', + rps[3])
+            if aiOpt == 0:
+                print(rps[2], 'beats', rps[0], sep=' ')
+        if not win:
+            if userOpt == aiOpt: print('Draw')
+            else: print(rps[aiOpt], 'beats', rps[userOpt], sep=' ')
+
+
 menu()
     
