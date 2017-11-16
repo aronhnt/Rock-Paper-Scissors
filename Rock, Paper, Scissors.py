@@ -6,15 +6,12 @@ def menu():
     running = True
     while running == True:
         print('''
-1 - Play Vs. Human
-2 - Play Vs. AI
-3 - Quit''')
+1 - Play Vs. AI
+2 - Quit''')
         option = errorCheck(input('Choose An Option: '), int, 'Choose An Option: ')
         if option == 1:
-            print('WIP lol')
-        if option == 2:
             main()
-        if option == 3:
+        if option == 2:
             running = False
     exit(0)
 
